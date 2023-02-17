@@ -1,4 +1,4 @@
-create table medicos(
+create table tb_medicos(
 
     doctor_id bigint not null auto_increment,
     name varchar(100) not null,
