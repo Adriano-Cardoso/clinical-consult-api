@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SearchDoctorResponse {
+public class SearchPatientResponse {
 
     private String name;
 
@@ -16,9 +16,6 @@ public class SearchDoctorResponse {
 
     private String phone;
 
-    private String crm;
-
-    private Specialty specialty;
-
+    private String cpf;
 
 }

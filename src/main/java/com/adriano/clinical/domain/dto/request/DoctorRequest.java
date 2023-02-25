@@ -26,16 +26,26 @@ public class DoctorRequest {
     @ApiModelProperty(position = 2, value = "Email do Médico", name = "email", dataType = "String", example = "odin@email.com")
     private String email;
 
+    @NotNull(message = "O valor do campo 'phone' é obrigatório no corpo da requisição")
+    @NotEmpty(message = "O valor do campo 'phone' é obrigatório no corpo da requisição")
+    @ApiModelProperty(position = 3, value = "Email do telefone", name = "phone", dataType = "String", example = "8100000000")
+    private String phone;
+
     @NotNull(message = "O valor do campo 'crm' é obrigatório no corpo da requisição")
     @Pattern(regexp = "\\d{4,6}")
-    @ApiModelProperty(position = 3, value = "Crm do Médico", name = "crm", dataType = "String", example = "123456")
+    @ApiModelProperty(position = 4, value = "Crm do Médico", name = "crm", dataType = "String", example = "123456")
     private String crm;
 
     @NotNull(message = "O valor do campo 'specialty' é obrigatório no corpo da requisição")
-    @ApiModelProperty(position = 4, value = "Especialidade do Médico", name = "specialty", dataType = "String", example = "ORTHOPEDICS")
+    @ApiModelProperty(position = 5, value = "Especialidade do Médico", name = "specialty", dataType = "String", example = "ORTHOPEDICS")
     private Specialty specialty;
 
     @NotNull(message = "O valor do campo 'address' é obrigatório no corpo da requisição")
-    @ApiModelProperty(position = 5, value = "Endereço do Médico", name = "address", dataType = "String")
+    @ApiModelProperty(position = 6, value = "Campo que verifica se o Médico está Ativo", name = "isActiveDoctor", dataType = "boolean")
+    private Boolean isActiveDoctor;
+
+    @NotNull(message = "O valor do campo 'address' é obrigatório no corpo da requisição")
+    @ApiModelProperty(position = 7, value = "Endereço do Médico", name = "address", dataType = "String")
     private AddressRequest address;
+
 }

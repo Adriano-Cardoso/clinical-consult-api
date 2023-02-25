@@ -17,11 +17,15 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     @Query("select new com.adriano.clinical.domain.dto.response.SearchDoctorResponse(" +
             "d.name," +
             " d.email," +
+            "d.phone," +
             " d.crm," +
             " d.specialty)" +
             " FROM Doctor" +
             " d WHERE (:name is null or d.name like %:name% )" +
             " order by d.name asc")
     Page<SearchDoctorResponse> searchRegisteredDoctors(Pageable pageable, @Param(value = "name") String name);
+
+    @Query("SELECT d FROM Doctor d WHERE d.crm = :crm")
+    Optional<Doctor> findByDoctorForCrm(@Param(value = "crm") String crm);
 
 }

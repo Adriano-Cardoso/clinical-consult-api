@@ -16,3 +16,4 @@ create table tb_medicos(
     primary key(doctor_id)
 
 );
+

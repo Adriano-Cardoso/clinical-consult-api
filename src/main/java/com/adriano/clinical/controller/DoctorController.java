@@ -2,6 +2,7 @@ package com.adriano.clinical.controller;
 
 
 import com.adriano.clinical.domain.dto.request.DoctorRequest;
+import com.adriano.clinical.domain.dto.request.DoctorUpdateRequest;
 import com.adriano.clinical.domain.dto.response.DoctorResponse;
 import com.adriano.clinical.domain.dto.response.SearchDoctorResponse;
 import com.adriano.clinical.service.DoctorService;
@@ -34,5 +35,18 @@ public class DoctorController {
             @RequestParam(required = false, defaultValue = "10", name = "limit") int limit,
             @RequestParam(required = false, name = "name") String name) {
         return ResponseEntity.status(HttpStatus.OK).body(this.doctorService.searchRegisteredDoctors(page, limit, name));
+    }
+
+    @ApiOperation(value = "Atualiza dados do médico")
+    @PutMapping("/{doctorId}")
+    public ResponseEntity<DoctorResponse> updateDoctor(@PathVariable("doctorId") Long doctorId,
+                                                       @RequestBody DoctorUpdateRequest doctorUpdateRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.doctorService.updateDoctor(doctorId, doctorUpdateRequest));
+    }
+
+    @ApiOperation(value = "Endpoint responsável por mudar o médico para inativo e matem os dados na base")
+    @PatchMapping("/{crm}")
+    public ResponseEntity<DoctorResponse> changesDoctorToInactive(@PathVariable("crm") String crm){
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(this.doctorService.changesDoctorToInactive(crm));
     }
 }
