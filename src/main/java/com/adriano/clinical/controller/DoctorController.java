@@ -33,7 +33,7 @@ public class DoctorController {
     public ResponseEntity<Page<SearchDoctorResponse>> listar(
             @RequestParam(required = false, defaultValue = "0", name = "page") int page,
             @RequestParam(required = false, defaultValue = "10", name = "limit") int limit,
-            @RequestParam(required = false, name = "name") String name) {
+            @RequestParam(required = false, name = "search") String name) {
         return ResponseEntity.status(HttpStatus.OK).body(this.doctorService.searchRegisteredDoctors(page, limit, name));
     }
 

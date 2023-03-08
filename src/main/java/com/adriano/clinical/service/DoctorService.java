@@ -49,8 +49,8 @@ public class DoctorService {
 
         Pageable pageable = PageRequest.of(page, limit);
 
-        log.info("method=searchRegisteredDoctors Name={} limit={}",
-                name, limit);
+        log.info("method=searchRegisteredDoctors page={} search={} limit={}",
+                page, name, limit);
         return doctorRepository.searchRegisteredDoctors(pageable, name);
     }
 
