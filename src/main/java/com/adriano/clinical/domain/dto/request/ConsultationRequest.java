@@ -1,24 +1,29 @@
 package com.adriano.clinical.domain.dto.request;
 
 import com.adriano.clinical.domain.enums.Specialty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConsultationRequest {
 
+    @JsonIgnore
     private String namePatient;
 
+    @JsonIgnore
     private String nameDoctor;
 
-    private LocalDateTime dateTime;
+    private Long patientId;
+
+    private Long doctorId;
+
+    private LocalDateTime dateGender;
 
     private Specialty specialty;
 
