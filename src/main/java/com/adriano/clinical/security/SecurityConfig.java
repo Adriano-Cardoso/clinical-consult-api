@@ -56,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests().antMatchers("/swagger-ui.html").permitAll().and()
                     .authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and()
                     .authorizeRequests().antMatchers("/auth").permitAll().and().authorizeRequests()
-                    .antMatchers("/patient/**", "/doctor/**").authenticated().and()
+                    .antMatchers("/patient/**", "/doctor/**", "/consultation/**" +
+                            "").authenticated().and()
                     .apply(new JwtConfigure(jwtTokenProvider));
 
             http.cors().and().csrf().disable();
